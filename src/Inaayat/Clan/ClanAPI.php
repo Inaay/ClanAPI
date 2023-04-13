@@ -31,7 +31,7 @@ class ClanAPI {
         status VARCHAR(10) NOT NULL
     )";
 		if ($this->connection->query($sql) === false) {
-			echo "Error creating table: " . $this->connection->error;
+			throw new ClanException("Error creating table: " . $this->connection->error);
 		}
 	}
 
@@ -43,7 +43,7 @@ class ClanAPI {
 		$stmt = $this->connection->prepare("INSERT INTO clans (name, leader, members, description, points, status) VALUES (?, ?, ?, ?, ?, ?)");
 		$stmt->bind_param("ssssis", $name, $leader, $members, $description, $points, $status);
 		if ($stmt->execute() === false) {
-			echo "Error adding clan: " . $stmt->error;
+			throw new ClanException("Error adding clan: " . $stmt->error);
 		}
 		$stmt->close();
 	}
@@ -52,7 +52,7 @@ class ClanAPI {
 		$stmt = $this->connection->prepare("DELETE FROM clans WHERE name = ?");
 		$stmt->bind_param("s", $name);
 		if ($stmt->execute() === false) {
-			echo "Error deleting clan: " . $stmt->error;
+			throw new ClanException("Error deleting clan: " . $stmt->error);
 		}
 		$stmt->close();
 	}
@@ -70,7 +70,7 @@ class ClanAPI {
 			$stmt = $this->connection->prepare("UPDATE clans SET members = ? WHERE name = ?");
 			$stmt->bind_param("ss", $members, $clan);
 			if ($stmt->execute() === false) {
-				echo "Error adding player to clan: " . $stmt->error;
+				throw new ClanException("Error adding player to clan: " . $stmt->error);
 			}
 			$stmt->close();
 		}
@@ -90,7 +90,7 @@ class ClanAPI {
 			$stmt = $this->connection->prepare("UPDATE clans SET members = ? WHERE name = ?");
 			$stmt->bind_param("ss", $members, $clan);
 			if ($stmt->execute() === false) {
-				echo "Error removing player from clan: " . $stmt->error;
+				throw new ClanException("Error removing player from clan: " . $stmt->error);
 			}
 			$stmt->close();
 		}
@@ -170,7 +170,7 @@ class ClanAPI {
 		$stmt = $this->connection->prepare("UPDATE clans SET description = ? WHERE name = ?");
 		$stmt->bind_param("ss", $description, $clan);
 		if ($stmt->execute() === false) {
-			echo "Error setting clan description: " . $stmt->error;
+			throw new ClanException("Error setting clan description: " . $stmt->error);
 		}
 		$stmt->close();
 	}
@@ -179,7 +179,7 @@ class ClanAPI {
 		$stmt = $this->connection->prepare("UPDATE clans SET points = points + ? WHERE name = ?");
 		$stmt->bind_param("is", $points, $clan);
 		if ($stmt->execute() === false) {
-			echo "Error adding clan points: " . $stmt->error;
+			throw new ClanException("Error adding clan points: " . $stmt->error);
 		}
 		$stmt->close();
 	}
@@ -188,7 +188,7 @@ class ClanAPI {
 		$stmt = $this->connection->prepare("UPDATE clans SET points = points - ? WHERE name = ?");
 		$stmt->bind_param("is", $points, $clan);
 		if ($stmt->execute() === false) {
-			echo "Error removing clan points: " . $stmt->error;
+			throw new ClanException("Error removing clan points: " . $stmt->error);
 		}
 		$stmt->close();
 	}
@@ -197,7 +197,7 @@ class ClanAPI {
 		$stmt = $this->connection->prepare("UPDATE clans SET points = ? WHERE name = ?");
 		$stmt->bind_param("is", $points, $clan);
 		if ($stmt->execute() === false) {
-			echo "Error setting clan points: " . $stmt->error;
+			throw new ClanException("Error setting clan points: " . $stmt->error);
 		}
 		$stmt->close();
 	}
@@ -226,7 +226,7 @@ class ClanAPI {
 		$stmt = $this->connection->prepare("UPDATE clans SET status = ? WHERE name = ?");
 		$stmt->bind_param("ss", $status, $name);
 		if ($stmt->execute() === false) {
-			echo "Error setting clan status: " . $stmt->error;
+			throw new ClanException("Error setting clan status: " . $stmt->error);
 		}
 		$stmt->close();
 	}
