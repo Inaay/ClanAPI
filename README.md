@@ -1,7 +1,7 @@
 # ClanAPI
 
 ClanAPI is a virion for PocketMine-MP that provides basic functionality for managing clans 
-###### A lil buggy | open an issue if you have errors or dm me on discord Inaa#0001
+###### Open an issue if you have errors or dm me on discord Inaa#0001
 
 ## Usage
 
