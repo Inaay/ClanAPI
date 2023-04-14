@@ -45,4 +45,6 @@ You can then use the methods provided by the ClanAPI class to perform various op
   <li><code>$clanAPI->isClanOpen($name)</code>: checks if a clan is open</li>
   <li><code>$clanAPI->isClanClosed($name)</code>: checks if a clan is closed</li>
   <li><code>$clanAPI->setClanStatus($name, $status)</code>: sets the status of a clan</li>
+  <li><code>$clanAPI->getClanDescription($name)</code>: gets the clan description</li>
+  <li><code>$clanAPI->getClanPoints($name)</code>: gets the clan points</li>
 </ul>
