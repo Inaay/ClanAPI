@@ -230,4 +230,24 @@ class ClanAPI {
 		}
 		$stmt->close();
 	}
+	
+	public function getClanDescription($name) {
+		$stmt = $this->connection->prepare("SELECT description FROM clans WHERE name = ?");
+		$stmt->bind_param("s", $name);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$row = $result->fetch_assoc();
+		$stmt->close();
+		return $row["description"];
+	}
+
+	public function getClanPoints($name) {
+		$stmt = $this->connection->prepare("SELECT points FROM clans WHERE name = ?");
+		$stmt->bind_param("s", $name);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$row = $result->fetch_assoc();
+		$stmt->close();
+		return $row["points"];
+	}
 }
