@@ -1,5 +1,5 @@
 name: ClanAPI
-version: 1.0.0
+version: 1.0.1
 antigen: Inaayat\Clan
 api: [4.0.0]
 author: Inaayat
